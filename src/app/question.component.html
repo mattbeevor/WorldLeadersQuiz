@@ -1,0 +1,25 @@
+
+
+<p class="startbutton" (click)="onStart()">
+Start Game
+</p>
+
+<h3>{{topscoreVisible == true? "Top score:":"&zwnj;" }} {{topscore}}</h3>
+<h3>{{scoreVisible == true? "Score:":"&zwnj;" }} {{score}}</h3>
+<h3>{{questionsLive == true ? "Time: ": "&zwnj;"}}{{ questionsLive == true ? ticks: ""}}</h3>
+<h3 [class.green]="scoreChangeUp" [class.red]="scoreChangeDown" class="step">{{scoreChange > 0 ? '+' : "&zwnj;"}}{{scoreChange}}</h3>
+
+
+<ul class="question">
+  <li *ngFor="let leader of correctLeader">
+    {{leader.name}}
+  </li>
+</ul>
+
+<ul >
+  <li class="leaders" *ngFor="let leader of leaders"
+    [class.correct]="leader === correct"
+    [class.selected]="leader === selectedLeader"
+    (click)="onSelect(leader)">{{leader.title}}
+  </li>
+</ul>
